@@ -53,6 +53,12 @@
 		<url-pattern>/resources/*</url-pattern>
 	</servlet-mapping>
 
+<servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.example.LoginServlet</servlet-class>
+</servlet>
+
+
 
 	<!-- <servlet>
 		<servlet-name>urbanMain</servlet-name>

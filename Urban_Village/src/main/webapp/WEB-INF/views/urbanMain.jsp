@@ -44,7 +44,7 @@
             align-items: center;
             border: 1px solid #ddd;
             border-radius: 5px;
-           margin-left:600px;
+            margin-left: 600px;
             padding: 5px;
         }
 
@@ -89,7 +89,7 @@
             margin: 20px;
             border: 1px solid #ddd;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box; 
+            box-sizing: border-box;
         }
 
         .accommodation img {
@@ -131,7 +131,8 @@
                 <input type="text" placeholder="여행지를 검색하세요">
                 <button>검색</button>
             </div>
-            <div class="user-links"> <a href="#">로그인</a>
+            <div class="user-links">
+                <a href="/urbanLogin">로그인</a> <!-- 로그인 버튼 클릭 시 로그인 페이지로 이동 -->
                 <a href="#">회원가입</a>
             </div>
         </div>

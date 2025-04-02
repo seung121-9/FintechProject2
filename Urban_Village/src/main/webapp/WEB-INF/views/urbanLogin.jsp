@@ -9,11 +9,13 @@
             font-family: sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f7f7f7;
         }
 
         .container {
             width: 80%;
             margin: 0 auto;
+            padding-top: 50px;
         }
 
         .header {
@@ -24,8 +26,9 @@
         }
 
         .header .logo {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
+            color: #ff5a5f;
         }
 
         .search-bar {
@@ -95,6 +98,56 @@
         .details p {
             margin-bottom: 5px;
         }
+
+        .login-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .login-form table {
+            width: 100%;
+        }
+
+        .login-form td {
+            padding: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #f7f7f7;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #ff5a5f;
+            background-color: white;
+            outline: none;
+        }
+
+        .login-button {
+            background-color: #ff5a5f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #f44336;
+        }
     </style>
 </head>
 <body>
@@ -119,24 +172,24 @@
             <a href="#">Luxe</a>
             <a href="#">독채</a>
         </div>
-        <form method="post" action="/Urban_Village/urban/login">
-		<table border="1" width="80%" align="center">
-			<tr align="center">
-				<td>아이디</td>
-				<td>비밀번호</td>
-			</tr>
-			<tr align="center">
-				<td><input type="text" name="id" size="20"></td>
-				<td><input type="password" name="pwd" size="20"></td>
-			</tr>
-			<tr align="center">
-				<td colspan="2">
-					<input type="submit" value="로그인">
-					<input type="reset" value="다시입력">
-				</td>
-			</tr>
-		</table>	
-	</form>
+
+        <form method="post" action="/Urban_Village/urban/login" class="login-form">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="id" class="input-field" placeholder="아이디를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="pwd" class="input-field" placeholder="비밀번호를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="login-button">로그인</button>
+                    </td>
+                </tr>
+            </table>    
+        </form>
     </div>
 </body>
 </html>
