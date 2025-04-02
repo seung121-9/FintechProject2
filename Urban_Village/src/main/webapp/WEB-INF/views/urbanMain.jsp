@@ -321,6 +321,7 @@ body {
 			</div>
 			<div class="user-links">
 				<a href="/Urban_Village/urban/loginForm">로그인</a>
+				<a href="/Urban_Village/urban/joinForm">회원가입</a>
 			</div>
 		</div>
 		<div class="categories-container">
