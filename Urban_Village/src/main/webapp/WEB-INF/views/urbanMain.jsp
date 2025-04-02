@@ -134,6 +134,9 @@
             <div class="user-links">
                 <a href="/urbanLogin">로그인</a> <!-- 로그인 버튼 클릭 시 로그인 페이지로 이동 -->
                 <a href="#">회원가입</a>
+
+            <div class="user-links"> <a href="#">로그인</a>
+                <a href="/Urban_Village/urban/urbanJoin">회원가입</a>
             </div>
         </div>
         <div class="categories">
