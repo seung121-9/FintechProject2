@@ -3,17 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>A</title>
+    <title>A Login</title>
     <style>
         body {
             font-family: sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f7f7f7;
         }
 
         .container {
             width: 80%;
             margin: 0 auto;
+            padding-top: 50px;
         }
 
         .header {
@@ -24,19 +26,9 @@
         }
 
         .header .logo {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
-        }
-
-        .header .user-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .header .user-links a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 10px;
+            color: #ff5a5f;
         }
 
         .search-bar {
@@ -44,7 +36,6 @@
             align-items: center;
             border: 1px solid #ddd;
             border-radius: 5px;
-           margin-left:600px;
             padding: 5px;
         }
 
@@ -81,15 +72,13 @@
         .accommodations {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
         }
 
         .accommodation {
-            width: 30%;
+            width: 300px;
             margin: 20px;
             border: 1px solid #ddd;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box; 
         }
 
         .accommodation img {
@@ -110,112 +99,77 @@
             margin-bottom: 5px;
         }
 
-        @media (max-width: 768px) {
-            .accommodation {
-                width: 45%;
-            }
+        .login-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
         }
 
-        @media (max-width: 480px) {
-            .accommodation {
-                width: 100%;
-            }
+        .login-form table {
+            width: 100%;
+        }
+
+        .login-form td {
+            padding: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #f7f7f7;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #ff5a5f;
+            background-color: white;
+            outline: none;
+        }
+
+        .login-button {
+            background-color: #ff5a5f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #f44336;
         }
     </style>
 </head>
 <body>
-
-
- 
-</div>
-
     <div class="container">
-        <div class="header">
-            <div class="logo">Urban&Villiage</div>
-            <div class="search-bar">
-                <input type="text" placeholder="여행지를 검색하세요">
-                <button>검색</button>
-            </div>
-            <div class="user-links"> 
-          <a href="/Urban_Village/urban/loginForm">로그인</a>
-      </div>
-            
-                <a href="/Urban_Village/urban/urbanJoin">회원가입</a>
-            </div>
-        </div>
-        <div class="categories">
-            <a href="#">최고의 전망</a>
-            <a href="#">호잇</a>
-            <a href="#">유량</a>
-            <a href="#">한적</a>
-            <a href="#">최고</a>
-            <a href="#">공원</a>
-            <a href="#">나무집</a>
-            <a href="#">소형주택</a>
-            <a href="#">인기급상</a>
-            <a href="#">Luxe</a>
-            <a href="#">독채</a>
-        </div>
-   
-        <div class="accommodations">
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image2.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Gangha-myeon, Yangpy...</h3>
-                    <p>★ 5.0 한국 가평군</p>
-                    <p>4월 12일 - 18일</p>
-                    <p>₩ 183,729 / 박</p>
-                    <p>게스트 한마디: 정말 예쁘고 깔끔한 곳....</p>
-                </div>
-            </div>
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image1.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Gangha-myeon, Yangpy...</h3>
-                    <p>★ 5.0 한국 가평군</p>
-                    <p>4월 12일 - 18일</p>
-                    <p>₩ 183,729 / 박</p>
-                    <p>게스트 한마디: 정말 예쁘고 깔끔한 곳....</p>
-                </div>
-            </div>
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image3.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Gapyeong-eup, Gapyeo...</h3>
-                    <p>★ 4.6 한국 가평군</p>
-                    <p>4월 20일 - 25일</p>
-                    <p>₩ 303,553 / 박</p>
-                    <p>게스트 한마디: 장보고 바로 오기 편했어요...</p>
-                </div>
-            </div>
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image4.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Okcheon-myeon, Yangp...</h3>
-                    <p>★ 4.86 한국 가평군</p>
-                    <p>5월 7일 - 12일</p>
-                    <p>₩ 184,871 / 박</p>
-                </div>
-            </div>
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image5.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Gangha-myeon, Yangpy...</h3>
-                    <p>★ 4.95 한국 가평군</p>
-                    <p>6월 1일 - 6일</p>
-                    <p>₩ 155,376 / 박</p>
-                </div>
-            </div>
-            <div class="accommodation">
-                <img src="${pageContext.request.contextPath}/resources/image/image6.jpg" alt="숙소 이미지">
-                <div class="details">
-                    <h3>한국 Gangha-myeon, Yangpy...</h3>
-                    <p>★ 4.95 한국 가평군</p>
-                    <p>4월 12일 - 17일</p>
-                    <p>₩ 183,729 / 박</p>
-                </div>
-            </div>
-        </div>
+       
+        <form method="post" action="/Urban_Village/urban/login" class="login-form">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="id" class="input-field" placeholder="아이디를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="pwd" class="input-field" placeholder="비밀번호를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="login-button">로그인</button>
+                    </td>
+                </tr>
+            </table>    
+        </form>
     </div>
 </body>
 </html>
