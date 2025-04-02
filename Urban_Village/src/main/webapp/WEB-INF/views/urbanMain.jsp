@@ -320,7 +320,7 @@ body {
 				<button>검색</button>
 			</div>
 			<div class="user-links">
-				<a href="#">로그인</a> <a href="#">회원가입</a>
+				<a href="/Urban_Village/urban/loginForm">로그인</a>
 			</div>
 		</div>
 		<div class="categories-container">
