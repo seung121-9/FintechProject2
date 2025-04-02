@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -272,50 +277,49 @@
                 <button>검색</button>
             </div>
             <div class="user-links"> <a href="#">로그인</a>
-                <a href="${context }/Urban_Village/urban/joinMember">회원가입</a>
+                <a href="${contextPath }/member/joinMember.do">회원가입</a>
             </div>
         </div>
     <!-- From Uiverse.io by ammarsaa --> 
-    <form class="form" action="/Urban_Village/controller/joinMember.do" method="post">
+    <form class="form" action="${contextPath }/member/addMember.do" method="post">
         <p class="title">회원가입창</p>
         <p class="message">회원가입후 즐겨보세요!</p>
         
         <label>
-            <input class="input" type="text" name="username" placeholder="" required="">
+            <input class="input" type="text" name="id" required>
             <span>아이디</span>
         </label>
         
         <label>
-            <input class="input" type="password" name="password" placeholder="" required="">
+            <input class="input" type="password" name="pwd" required>
             <span>비밀번호</span>
         </label>
 
         <label>
-            <input class="input" type="email" name="email" placeholder="" required="">
+            <input class="input" type="email" name="email" required>
             <span>이메일</span>
         </label>
 
         <label>
-            <input class="input" type="date" name="birthdate" placeholder="" required="">
+            <input class="input" type="date" name="birth" required>
             <span>생년월일</span>
         </label>
 
         <label>
-            <select class="input" name="gender" required="">
+            <select class="input" name="gender" required>
                 <option value="" disabled selected>성별</option>
-                <option value="male">남성</option>
-                <option value="female">여성</option>
-                <option value="other">기타</option>
+                <option value="M">남성</option>
+                <option value="F">여성</option>
             </select>
         </label>
 
         <label>
-            <input class="input" type="tel" name="phone" placeholder="" required="">
+            <input class="input" type="tel" name="phonenumber" required>
             <span>전화번호</span>
         </label>
 
         <label>
-            <input class="input" type="text" name="name" placeholder="" required="">
+            <input class="input" type="text" name="name" required>
             <span>이름</span>
         </label>
 

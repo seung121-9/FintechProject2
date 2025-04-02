@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,7 +158,7 @@
 <body>
     <div class="container">
        
-        <form method="post" action="/Urban_Village/urban/login" class="login-form">
+        <form method="post" action="${contextPath }/member/login.do" class="login-form">
             <table>
                 <tr>
                     <td>아이디</td>

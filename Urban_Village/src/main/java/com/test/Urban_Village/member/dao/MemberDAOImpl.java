@@ -26,4 +26,10 @@ SqlSession sqlSession;
 		return sqlSession.selectOne("mapper.member.login", member);
 	}
 
+	@Override
+	public int addMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("mapper.member.join",member);
+	}
+
 }

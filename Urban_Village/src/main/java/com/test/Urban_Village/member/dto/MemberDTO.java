@@ -1,18 +1,18 @@
 package com.test.Urban_Village.member.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MemberDTO {
     
-    private String id;                // È¸¿ø ID
-    private String pwd;               // ºñ¹Ð¹øÈ£
-    private String email;             // ÀÌ¸ÞÀÏ
-    private Date birth;               // »ý³â¿ùÀÏ
-    private String gender;            // ¼ºº°
-    private String phonenumber;       // ÀüÈ­¹øÈ£
-    private String name;              // ÀÌ¸§
-    private Date regdate;             // °¡ÀÔÀÏ
-    private Date moddate;             // ¼öÁ¤ÀÏ
+    private String id;                // È¸ï¿½ï¿½ ID
+    private String pwd;               // ï¿½ï¿½Ð¹ï¿½È£
+    private String email;             // ï¿½Ì¸ï¿½ï¿½ï¿½
+    private Date birth;               // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String gender;            // ï¿½ï¿½ï¿½ï¿½
+    private String phonenumber;       // ï¿½ï¿½È­ï¿½ï¿½È£
+    private String name;              // ï¿½Ì¸ï¿½
+    private Date regdate;             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private Date moddate;             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     
     public String getId() {
         return id;

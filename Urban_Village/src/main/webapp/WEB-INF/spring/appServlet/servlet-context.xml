@@ -23,4 +23,18 @@
     <!-- 컴포넌트 스캔 -->
     <context:component-scan base-package="com.test.Urban_Village" />
 
+
+	<mvc:interceptors>
+      <mvc:interceptor>
+         <mvc:mapping path="/*" />
+         <bean
+            class="com.test.Urban_Village.common.interceptor.ViewNameInterceptor" />
+      </mvc:interceptor>
+   </mvc:interceptors>
+   <bean id="multipartResolver"
+      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="52428800" />
+      <property name="maxInMemorySize" value="1000000" />
+      <property name="defaultEncoding" value="utf-8" />
+   </bean>
 </beans>

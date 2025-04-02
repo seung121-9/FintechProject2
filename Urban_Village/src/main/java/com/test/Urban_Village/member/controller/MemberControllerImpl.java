@@ -1,5 +1,7 @@
 package com.test.Urban_Village.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,59 +22,83 @@ import com.test.Urban_Village.member.service.MemberService;
 import com.test.Urban_Village.member.service.MemberServiceImpl;
 
 @Controller
-@RequestMapping("/urban/member") // È¸¿ø °ü·Ã ¿äÃ»¿¡ ´ëÇÑ ±âº» URLÀ» /urban/member·Î º¯°æ
+@RequestMapping("/member")
 public class MemberControllerImpl implements MemberController {
+   
+   @Autowired
+   MemberService service;
+    
+   
+   @Override
+    @RequestMapping("/memberList.do")
+    public ModelAndView listMembers() {
+        List<MemberDTO> membersList = service.listMembers();
+        ModelAndView mav = new ModelAndView("member/urbanMemberList");
+      mav.addObject("membersList", membersList);
+      return mav;
+    }
+   @Override
+    @RequestMapping("/urbanLogin.do")
+    public ModelAndView loginForm(HttpServletRequest request, HttpServletResponse response) {
+      String viewName = (String) request.getAttribute("viewName");
+      ModelAndView mav = new ModelAndView();
+      mav.setViewName(viewName);
+      mav.addObject("viewName",viewName);
+      System.out.println("viewName"+viewName);
+      return   mav;
+    }
+   @Override
+    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+    public ModelAndView login(@RequestParam("id") String id, @RequestParam("pwd") String pwd) {
+        ModelAndView mav = new ModelAndView();
+        // ë¡œê·¸ì¸ ì„œë¹„ìŠ¤ì—ì„œ ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ í™•ì¸
+        MemberDTO member = service.login(id, pwd);
+        if (member != null) {
+            mav.setViewName("redirect:/member/memberList.do"); 
+        } else {
+            mav.setViewName("member/urbanLogin");
+            mav.addObject("error", "ì˜ëª»ëœ ë¡œê·¸ì¸ ì •ë³´ì…ë‹ˆë‹¤.");
+        }
+        return mav;
+    }
+   
+   @Override
+   @RequestMapping("/joinMember.do")
+   public ModelAndView joinMember(HttpServletRequest request, HttpServletResponse response) {
+       // viewNameì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ì„ ê²½ìš° ê¸°ë³¸ê°’ì„ ì„¤ì •
+       String viewName = (String) request.getAttribute("viewName");
+       if (viewName == null) {
+           viewName = "member/joinMember"; // ê¸°ë³¸ ì´ë™í•  ë·° ì´ë¦„ ì„¤ì • (JSP íŒŒì¼ ê²½ë¡œ)
+       }
 
-	@Autowired
-	MemberService service;
+       ModelAndView mav = new ModelAndView();
+       mav.setViewName(viewName);
+       mav.addObject("viewName", viewName);
+       System.out.println("viewName: " + viewName);
+       
+       return mav;
+   }
+   @RequestMapping(value = "/addMember.do", method = RequestMethod.POST)
+   public ModelAndView addMember(@ModelAttribute MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception {
+       int result = service.addMember(member);
+       System.out.println("Insert Result: " + result);
+       response.setContentType("text/html;charset=utf-8");
+       PrintWriter out = response.getWriter();
 
-	// @Override
-	// @RequestMapping("/main") // ÀÌ ¸ÅÇÎÀ» Á¦°ÅÇÕ´Ï´Ù.
-	// public ModelAndView main() {
-	// 	ModelAndView mav = new ModelAndView("urbanMain");
-	// 	return mav;
-	// }
+       if (result == 1) {
+           out.write("<script>");
+           out.write("alert('íšŒì› ê°€ì…ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤!');");
+           out.write("location.href='/Urban_Village/member/urbanLogin.do';");
+           out.write("</script>");
+       } else {
+           out.write("<script>");
+           out.write("alert('íšŒì› ê°€ì…ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.');");
+           out.write("location.href='/Urban_Village/member/joinMember.do';");
+           out.write("</script>");
+       }
+       return null;
+   }
+   
 
-	@Override
-	@RequestMapping("/list") // È¸¿ø ¸ñ·Ï URLÀ» /urban/member/list·Î º¯°æ
-	public ModelAndView listMembers() {
-		List<MemberDTO> membersList = service.listMembers();
-		ModelAndView mav = new ModelAndView("urbanMemberList");
-		mav.addObject("membersList", membersList);
-		return mav;
-	}
 
-	@Override
-	@RequestMapping("/loginForm") // ·Î±×ÀÎ Æû URLÀ» /urban/member/loginFormÀ¸·Î º¯°æ
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView("urbanLogin");
-		return mav;
-	}
-
-	@Override
-	@RequestMapping(value = "/login", method = RequestMethod.POST) // ·Î±×ÀÎ Ã³¸® URLÀ» /urban/member/loginÀ¸·Î º¯°æ
-	public ModelAndView login(@RequestParam("id") String id, @RequestParam("pwd") String pwd) {
-		ModelAndView mav = new ModelAndView();
-		MemberDTO member = service.login(id, pwd);
-		if (member != null) {
-			mav.setViewName("redirect:/urban/member/list"); // ·Î±×ÀÎ ¼º°ø ½Ã È¸¿ø ¸ñ·ÏÀ¸·Î ¸®´ÙÀÌ·ºÆ®
-		} else {
-			mav.setViewName("urbanLogin");
-			mav.addObject("error", "Àß¸øµÈ ·Î±×ÀÎ Á¤º¸ÀÔ´Ï´Ù.");
-		}
-		return mav;
-	}
-
-	@Override
-	@RequestMapping("/joinForm") // È¸¿ø °¡ÀÔ Æû URLÀ» /urban/member/joinFormÀ¸·Î º¯°æ
-	public ModelAndView joinMember() {
-		ModelAndView mav = new ModelAndView("urbanJoin");
-		return mav;
-	}
-
-	@Override
-	public ModelAndView main() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
